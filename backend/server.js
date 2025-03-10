@@ -8,7 +8,7 @@ const routes=require("./routes/userRoutes")
 const videoRoutes=require("./routes/adminRoutes")
 const cookieParser=require("cookie-parser")
 const path=require("path") 
-const PORT="https://videohub-z726.onrender.com"
+const PORT=process.env.PORT||3003
 connectionString("mongodb+srv://sameerdas6143:S6EfR71P3I2MPGlt@mern-cluster.4hg4u.mongodb.net/react-videohub?retryWrites=true&w=majority&appName=mern-cluster")
 
 //midlleware
