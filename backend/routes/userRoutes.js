@@ -7,25 +7,33 @@ const mongoose =require("mongoose")
 const multer=require("multer")
 const crypto=require("crypto")
 const path=require("path");
+const { CloudinaryStorage } =require("multer-storage-cloudinary")
+const cloudinary=require("cloudinary").v2
 const commentModel = require("../model/comments");
 const { isuserLoggedin } = require("../middleware/userauth");
+const path=require("path")
 
 
-const storage=multer.diskStorage({
-  destination:function(req,file,cb){
-    cb(null,"../backend/upload")
-    
-  },
-  filename:function(req,file,cb){
-    crypto.randomBytes(12,function(err,bytes){
-      const fileName=bytes.toString("hex") + path.extname(file.originalname)
-     cb(null,fileName)
-    })
-
-  }
+cloudinary.config({
+  cloud_name:process.env.CLOUD_NAME,
+  api_key:process.env.API_KEY,
+  api_secret:process.env.API_SECRET
 })
+ const storage=new CloudinaryStorage({
+  cloudinary:cloudinary,
+  params:async(req,file)=>{
+    return{
+      folder:upload,
+      format:file.mimetype.split("/")[1],
+      public_id:crypto.randomBytes(12).toString("hex")
+    }
+  }
+ })
 
-const upload=multer({storage:storage})
+
+
+
+const upload=multer({storage})
 routes.get("/",(req,res)=>{
   res.send("Hell0 Server")
 })
@@ -95,21 +103,21 @@ routes.post("/user-login",async(req,res)=>{
 
  routes.post("/user-profile-update",upload.single("File"),async(req,res)=>{
       const {userid}=req.body
-      const userUpdate =await userModel.findByIdAndUpdate(userid,{profile:req.file.filename},{new:true})
-      const commentUpdate=await commentModel.updateMany({user_id:userUpdate._id},{$set:{commentProfile:req.file.filename}})
+      const userUpdate =await userModel.findByIdAndUpdate(userid,{profile:req.file.path},{new:true})
+      const commentUpdate=await commentModel.updateMany({user_id:userUpdate._id},{$set:{commentProfile:req.file.path}})
 
       res.send("Profile Updated")
   
  })
- routes.get("/upload/:file",async(req,res)=>{
-  const imagePath=path.join(__dirname,"..","upload",req.params.file)
+//  routes.get("/upload/:file",async(req,res)=>{
+//   const imagePath=path.join(__dirname,"..","upload",req.params.file)
 
-  res.sendFile(imagePath,err=>{
-    if(err){
-      res.status(404).json({errFile:"image not found"})
-    }
-  })
- })
+//   res.sendFile(imagePath,err=>{
+//     if(err){
+//       res.status(404).json({errFile:"image not found"})
+//     }
+//   })
+//  })
  routes.get("/get-user/:id",isuserLoggedin,async(req,res)=>{
 
     
@@ -122,7 +130,7 @@ routes.post("/user-login",async(req,res)=>{
             
             if(userDetails){
              
-            res.status(200).json({msg:"fetched",imageUrl:`https://videohub-z726.onrender.com/upload/${userDetails.profile}`,userDetails})    
+            res.status(200).json({msg:"fetched",imageUrl:`${userDetails.profile}`,userDetails})    
       
             }
             else{

@@ -31,7 +31,8 @@ function UserSignin() {
       password:yup.string().required("password is required")
     }),
     onSubmit:(async value=>{
-        await axios.post(`https://videohub-z726.onrender.com/user-login`,value,{withCredentials:true}).then(response=>{
+           const signuser={...value,email:value.email.toLowerCase()}
+          await axios.post(`https://videohub-z726.onrender.com/user-login`,signuser,{withCredentials:true}).then(response=>{
          
            setCookie("token",response.data.userData,{expires: new Date(Date.now() + 7*24*60 * 60 * 1000) })
            setUser(response.data.userData)
