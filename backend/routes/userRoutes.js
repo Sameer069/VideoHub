@@ -27,7 +27,7 @@ const storage=multer.diskStorage({
 
 const upload=multer({storage:storage})
 routes.get("/",(req,res)=>{
-  res.send("Hell backend")
+  res.send("Hell0 Server")
 })
 
 
@@ -68,11 +68,7 @@ routes.post("/user-login",async(req,res)=>{
         const playload=response.toObject()
         delete playload.password
         const userData=jwt.sign(playload,process.env.JWT_SECRET)
-        res.cookie("token",userData,{
-          httpOnly:true,
-          secure:false,
-          sameSite:"None"
-        })
+        res.cookie("token",userData)
       
        return res.status(200).json({msg:"succes",userData,response})
       }
@@ -125,12 +121,7 @@ routes.post("/user-login",async(req,res)=>{
             const userDetails=await userModel.findById(req.params.id).select("-_id profile user_name ")
             
             if(userDetails){
-              // const token=req.user 
-              //  jwt.verify(token,"sam@12",(err,decode)=>{
-              // if(err) return res.status(400).json({msg:"Invalid cookies"})
-             
-            // })
-            res.status(200).json({msg:"fetched",imageUrl:`http://127.0.0.1:3003/upload/${userDetails.profile}`,userDetails})    
+            res.status(200).json({msg:"fetched",imageUrl:`https://videohub-z726.onrender.com/upload/${userDetails.profile}`,userDetails})    
       
             }
             else{

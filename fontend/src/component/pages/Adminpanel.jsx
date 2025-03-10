@@ -23,7 +23,7 @@ function Adminpanel() {
        
   
         if(cookie["token"] && userid ){
-          await axios.get(`http://127.0.0.1:3003/get-user/${userid}`,{
+          await axios.get(`https://videohub-z726.onrender.com/get-user/${userid}`,{
             headers:{Authorization:`Bearer ${token}`}
           }).then(  response=>{
   
@@ -70,7 +70,7 @@ function Adminpanel() {
         
                   
                try{
-                    await axios.post("http://127.0.0.1:3003/videos/admin/add-video",videoDetails)
+                    await axios.post(`https://videohub-z726.onrender.com/videos/admin/add-video`,videoDetails)
                    alert("Video added ")
                 
                }

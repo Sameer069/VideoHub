@@ -35,7 +35,7 @@ function SinglevideoPlayer() {
       const controller = new AbortController();
       
      async function  getsingleVideoDetails(){
-        await axios.get(`http://127.0.0.1:3003/videos/get-videos/${videoid}?si=${si}`,{signal:controller.signal})
+        await axios.get(`https://videohub-z726.onrender.com/videos/get-videos/${videoid}?si=${si}`,{signal:controller.signal})
         .then(res=>{
            
             setVideoUrl(res.data.allvideo.url)
@@ -56,7 +56,7 @@ function SinglevideoPlayer() {
       
         const fetchComment=async()=>{
 
-          const response=await axios.get(`http://127.0.0.1:3003/videos/commentlist/${videoUrl}`)
+          const response=await axios.get(`https://videohub-z726.onrender.com/videos/commentlist/${videoUrl}`)
           setcomment(response.data.videoComment)
           
          }

@@ -30,7 +30,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
    useEffect(()=>{
         const fetchData=async()=>{
             try{
-             const response=await axios.get(`http://127.0.0.1:3003/get-user/${userid}`,{
+             const response=await axios.get(`https://videohub-z726.onrender.com/get-user/${userid}`,{
                headers:{Authorization:`Bearer ${token}`}
              })
               setUserComment(response.data.userDetails)
@@ -64,7 +64,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
         formdata.append("Usercomment",comment)
         formdata.append("videoId",videoUrl)
          try{
-            const response= await axios.post("http://127.0.0.1:3003/videos/comment",formdata);
+            const response= await axios.post(`https://videohub-z726.onrender.com/videos/comment`,formdata);
            
          }
          catch{
@@ -79,7 +79,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
       
       const fetchComment=async()=>{
 
-        const response=await axios.get(`http://127.0.0.1:3003/videos/commentlist/${videoUrl}`)
+        const response=await axios.get(`https://videohub-z726.onrender.com/videos/commentlist/${videoUrl}`)
     
       const userCommentTotal= response.data.videoComment.comments.map(user=>{
 
@@ -136,7 +136,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
    formdata.append("userid",userid)
 
    try{
-     const response=await axios.post("http://127.0.0.1:3003/add-like",formdata,{
+     const response=await axios.post(`https://videohub-z726.onrender.com/add-like`,formdata,{
       headers:{Authorization:`Bearer ${token}`}
      })
     
@@ -176,7 +176,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
          </div>
          <div className='flex  gap-5 items-center justify-between h-[60px]'>
               <div className=' flex items-center gap-3 '>
-                <div className='w-[50px]'> <img width="100%" className='rounded-[50%]' src={`http://127.0.0.1:3003/upload/${userVideoInfo.user_id.profile}`}/></div>
+                <div className='w-[50px]'> <img width="100%" className='rounded-[50%]' src={`${import.meta.env.VITE_BASE_URL}/upload/${userVideoInfo.user_id.profile}`}/></div>
               
               <div className=' font-bold'>{userVideoInfo.user_id.user_name}</div>
               </div>
@@ -216,7 +216,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
               <div>
                  <div>
                   <div className='flex items-center mt-1'>
-                  <img  className='w-[40px] rounded-[50%] h-[40px] me-1.5 ' src={`http://127.0.0.1:3003/upload/${userComment.profile}`}/>
+                  <img  className='w-[40px] rounded-[50%] h-[40px] me-1.5 ' src={`${import.meta.env.VITE_BASE_URL}/upload/${userComment.profile}`}/>
                   <textarea id='commentBox' value={comment} name='comment' onChange={handleChangeComment}    className={`border-1 p-[10px] w-full   border-stone-400  focus:h-[100px]  outline-none resize-none  h-[50px] `} />
                   <input type='hidden' value={userComment._id} name='userCmtid' />
                   </div>
@@ -243,7 +243,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
                return <div key={i} className='my-3'>
               <div className='flex'>
               <div className='w-[45px] h-[50px]'>
-              <img  width="100%" height="30" className='rounded-[50%]' src={`http://127.0.0.1:3003/upload/${commentUser.commentProfile}`}/></div>
+              <img  width="100%" height="30" className='rounded-[50%]' src={`https://videohub-z726.onrender.com/upload/${commentUser.commentProfile}`}/></div>
              <div className='ms-2 relative w-full'>
              <div className='text-[13px]'>{commentUser.user_name}</div>
              <div className='text-[15px]'> {commentUser.comments}</div>

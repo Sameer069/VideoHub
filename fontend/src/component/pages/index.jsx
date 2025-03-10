@@ -48,7 +48,7 @@ const IndexPage=()=>{
        
   
         if(cookie["token"] && userid ){
-          await axios.get(`http://127.0.0.1:3003/get-user/${userid}`,{
+          await axios.get(`https://videohub-z726.onrender.com/get-user/${userid}`,{
             headers:{Authorization:`Bearer ${token}`}
           }).then(  response=>{
   
@@ -67,7 +67,7 @@ const IndexPage=()=>{
               console.log(err)
            
            })
-             await axios.get("http://127.0.0.1:3003/videos/categories").then(response=>{
+             await axios.get(`https://videohub-z726.onrender.com/videos/categories`).then(response=>{
           
               setCategories(response.data.categories)
               
@@ -106,7 +106,7 @@ const IndexPage=()=>{
 
         formdata.append("category",data)
         
-          await axios.post("http://127.0.0.1:3003/videos/category-video",formdata)
+          await axios.post(`https://videohub-z726.onrender.com/videos/category-video`,formdata)
           .then(response=>{
       
             if(response.status===200){
@@ -262,7 +262,7 @@ const IndexPage=()=>{
             </div>
               <div className=' max-[768px]:px-[10px]'>
              <div className='flex items-center  h-[60px] overflow-hidden  '>
-             <img src={`http://127.0.0.1:3003/upload/${url.user_id.profile}`} width="30" height="30" className='rounded-[50%]'/>
+             <img src={`https://videohub-z726.onrender.com/upload/${url.user_id.profile}`} width="30" height="30" className='rounded-[50%]'/>
             <div className='mx-[10px]  h-[50px] overflow-hidden'>
             {url.title}
             

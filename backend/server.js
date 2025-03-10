@@ -8,8 +8,8 @@ const routes=require("./routes/userRoutes")
 const videoRoutes=require("./routes/adminRoutes")
 const cookieParser=require("cookie-parser")
 const path=require("path") 
-const PORT=process.env.PORT||3003
-connectionString(process.env.MONGO_URL)
+const PORT="https://videohub-z726.onrender.com"
+connectionString("mongodb+srv://sameerdas6143:S6EfR71P3I2MPGlt@mern-cluster.4hg4u.mongodb.net/react-videohub?retryWrites=true&w=majority&appName=mern-cluster")
 
 //midlleware
 app.use(cookieParser())
@@ -18,7 +18,7 @@ app.use(express.json())
 app.use(express.text())
 app.use(cors(
     {
-        origin:['http://localhost:3001', 'http://127.0.0.1:3001'],
+        origin:"https://videohub-1-szeq.onrender.com",
         credentials:true,
        
     }
@@ -31,4 +31,4 @@ app.use("/",routes)
 app.use("/videos",videoRoutes)
 
 
-app.listen(PORT,()=>console.log("server started at 3003"))
+app.listen(PORT,()=>console.log("server started "))

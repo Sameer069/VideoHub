@@ -35,7 +35,7 @@ function IndexHome({profilejpg,VideoSearchBar}) {
       formData.append("File",file)
       formData.append("userid",userId)
      
-      const response =await axios.post("http://127.0.0.1:3003/user-profile-update",formData)
+      const response =await axios.post(`https://videohub-z726.onrender.com/user-profile-update`,formData)
      
      
   }

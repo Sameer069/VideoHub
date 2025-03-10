@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
 import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToSaveList } from '../../slicer/Video-slicer';
@@ -27,7 +26,7 @@ function Videopannel() {
           formdata.append("userWatchid",userVideoid)
           formdata.append("urlid",videourl)
            try{
-              const response=await axios.post("http://127.0.0.1:3003/videos/add-video-list",formdata)
+              const response=await axios.post(`https://videohub-z726.onrender.com/videos/add-video-list`,formdata)
              if(response.status===200){
               dispatch(addToSaveList(response.data.videoView))
              
@@ -57,7 +56,7 @@ function Videopannel() {
         useEffect(()=>{
             const fetchData=async()=>{
              try{
-              const response= await axios.get("http://127.0.0.1:3003/videos/get-videos")
+              const response= await axios.get(`https://videohub-z726.onrender.com/videos/get-videos`)
              
               const responseUser= response.data.allvideo.map(user=>{
                const now=new Date()
@@ -115,7 +114,7 @@ function Videopannel() {
         useEffect(() => {
           const fetchData=async()=>{
               try{
-                const response=await axios.get(`http://127.0.0.1:3003/get-user/${userid}`,{
+                const response=await axios.get(`https://videohub-z726.onrender.com/get-user/${userid}`,{
                   headers:{Authorization:`Bearer ${token}`}
                 })
                 setuserDetails(response.data.userDetails)
@@ -146,7 +145,7 @@ function Videopannel() {
             </div>
               <div className=' max-[768px]:px-[10px]'>
              <div className='flex items-center  h-[60px] overflow-hidden  '>
-             <img src={`http://127.0.0.1:3003/upload/${url.user_id.profile}`} width="30" height="30" className='rounded-[50%]'/>
+             <img src={`https://videohub-z726.onrender.com/upload/${url.user_id.profile}`} width="30" height="30" className='rounded-[50%]'/>
             <div className='mx-[10px]  h-[50px] overflow-hidden'>
             {url.title}
             

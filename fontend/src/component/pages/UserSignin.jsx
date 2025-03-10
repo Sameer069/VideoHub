@@ -31,7 +31,7 @@ function UserSignin() {
       password:yup.string().required("password is required")
     }),
     onSubmit:(async value=>{
-        await axios.post("http://127.0.0.1:3003/user-login",value,{withCredentials:true}).then(response=>{
+        await axios.post(`https://videohub-z726.onrender.com/user-login`,value,{withCredentials:true}).then(response=>{
          
            setCookie("token",response.data.userData,{expires: new Date(Date.now() + 7*24*60 * 60 * 1000) })
            setUser(response.data.userData)
@@ -83,7 +83,7 @@ function UserSignin() {
     onSubmit:(async value=>{
         const user={...value,ChangeEmail:value.ChangeEmail.toLowerCase()}
        try{
-          const response=await axios.post("http://127.0.0.1:3003/change-password",user)
+          const response=await axios.post(`https://videohub-z726.onrender.com/change-password`,user)
           if(response.status===200){
             setModal(false)
              

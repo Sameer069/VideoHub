@@ -28,7 +28,7 @@ function UserSignup() {
         }),
         onSubmit:(async value=>{
          
-            await axios.post("http://127.0.0.1:3003/user-register",value)
+            await axios.post(`https://videohub-z726.onrender.com/user-register`,value)
             .then(response=>{
               if(response.status===200){
                 setHide(true)
