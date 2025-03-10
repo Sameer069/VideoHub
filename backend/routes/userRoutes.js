@@ -6,7 +6,6 @@ const jwt=require("jsonwebtoken")
 const mongoose =require("mongoose")
 const multer=require("multer")
 const crypto=require("crypto")
-const path=require("path");
 const { CloudinaryStorage } =require("multer-storage-cloudinary")
 const cloudinary=require("cloudinary").v2
 const commentModel = require("../model/comments");

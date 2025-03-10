@@ -56,7 +56,7 @@ function Userprofile({profilePic,username}) {
       
          <div >
 
-          <img src={preview ||profilePic} width="60" height="60" className="rounded-[50%] cursor-pointer"  onClick={inputimgClick}  />
+          <img src={preview ||profilePic}  className="rounded-[50%] w-[50px] h-[50px] cursor-pointer"  onClick={inputimgClick}  />
           
            <input type='file'  ref={inputRef} name='uploadPic' onChange={handleImgchhange} className=' hidden'/ >
            <input type='hidden' ref={inputHiddenRef} value={userid} />

@@ -16,7 +16,7 @@ const userSchema=new mongoose.Schema({
     },
     profile:{
         type:String,
-        default:"default.jpg"
+        default:"https://res.cloudinary.com/dzmrkbev5/image/upload/v1741630343/%5Bobject%20Object%5D/93039741e042c42035ea22e2.jpg"
     },
     post_video:[
         {
