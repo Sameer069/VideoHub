@@ -125,11 +125,7 @@ routes.post("/user-login",async(req,res)=>{
             const userDetails=await userModel.findById(req.params.id).select("-_id profile user_name ")
             
             if(userDetails){
-              // const token=req.user 
-              //  jwt.verify(token,"sam@12",(err,decode)=>{
-              // if(err) return res.status(400).json({msg:"Invalid cookies"})
-             
-            // })
+            
             res.status(200).json({msg:"fetched",imageUrl:`http://127.0.0.1:3003/upload/${userDetails.profile}`,userDetails})    
       
             }
