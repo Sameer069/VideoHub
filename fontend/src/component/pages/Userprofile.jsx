@@ -102,7 +102,7 @@ function Userprofile({profilePic,username}) {
                   
                    <div className='text-stone-600'>{video.user_id.user_name}</div>
                   </div>
-                  <div className='text-stone-600'>{video.views.length} views</div>
+                 
 
                
                </div>
