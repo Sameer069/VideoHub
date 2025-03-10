@@ -27,8 +27,8 @@ function UserSignup() {
           password:yup.string().required("password is required")
         }),
         onSubmit:(async value=>{
-         
-            await axios.post(`https://videohub-z726.onrender.com/user-register`,value)
+              const user={...value,email:value.email.toLowerCase()}
+            await axios.post(`https://videohub-z726.onrender.com/user-register`,user)
             .then(response=>{
               if(response.status===200){
                 setHide(true)
