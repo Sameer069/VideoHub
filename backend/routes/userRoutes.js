@@ -121,6 +121,7 @@ routes.post("/user-login",async(req,res)=>{
             const userDetails=await userModel.findById(req.params.id).select("-_id profile user_name ")
             
             if(userDetails){
+             
             res.status(200).json({msg:"fetched",imageUrl:`https://videohub-z726.onrender.com/upload/${userDetails.profile}`,userDetails})    
       
             }
