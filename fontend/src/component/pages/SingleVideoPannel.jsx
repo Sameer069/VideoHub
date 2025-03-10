@@ -176,7 +176,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
          </div>
          <div className='flex  gap-5 items-center justify-between h-[60px]'>
               <div className=' flex items-center gap-3 '>
-                <div className='w-[50px]'> <img width="100%" className='rounded-[50%]' src={`${import.meta.env.VITE_BASE_URL}/upload/${userVideoInfo.user_id.profile}`}/></div>
+                <div className='w-[50px]'> <img width="100%" className='rounded-[50%]' src={`https://videohub-z726.onrender.com/upload/${userVideoInfo.user_id.profile}`}/></div>
               
               <div className=' font-bold'>{userVideoInfo.user_id.user_name}</div>
               </div>
@@ -216,7 +216,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
               <div>
                  <div>
                   <div className='flex items-center mt-1'>
-                  <img  className='w-[40px] rounded-[50%] h-[40px] me-1.5 ' src={`${import.meta.env.VITE_BASE_URL}/upload/${userComment.profile}`}/>
+                  <img  className='w-[40px] rounded-[50%] h-[40px] me-1.5 ' src={`https://videohub-z726.onrender.com/upload/${userComment.profile}`}/>
                   <textarea id='commentBox' value={comment} name='comment' onChange={handleChangeComment}    className={`border-1 p-[10px] w-full   border-stone-400  focus:h-[100px]  outline-none resize-none  h-[50px] `} />
                   <input type='hidden' value={userComment._id} name='userCmtid' />
                   </div>
