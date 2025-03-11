@@ -48,13 +48,13 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
             headers:{Authorization:`Bearer ${token}`}
           })
           if(response.status===200){
-            setToggledislike(true)
-            setToggleLike(false)
-          }
-          else if(response.status===201){
-           
             setToggleLike(true)
             setToggledislike(false)
+          }
+          else if(response.status===201){
+            setToggledislike(true)
+            setToggleLike(false)
+            
           }
           else{
             setToggleLike(false)

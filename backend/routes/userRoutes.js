@@ -150,7 +150,7 @@ routes.post("/user-login",async(req,res)=>{
     const user=await userModel.findById(req.body.userid).select("_id user_name email")
     const video=await videoModel.findOne({url:req.body.videoUrl})
     if(video && user){
-      const index=video.Dislike.findIndex(users=>users._id===user._id)
+      const index=video.Dislike.findIndex(users=>users._id.toString() === user._id.toString())
       if(index!==-1){
         video.Dislike.splice(index,1)
         await video.save()
@@ -161,6 +161,9 @@ routes.post("/user-login",async(req,res)=>{
         await video.save()
         res.status(200).json({msg:"Like submit"})
       }
+      else {
+        return res.status(400).json({ msg: "Already liked" });
+    }
     }
     else{
       res.status(404).json({msg:"Invalid User"})
@@ -173,7 +176,7 @@ routes.post("/user-login",async(req,res)=>{
   const video=await videoModel.findOne({url:req.body.videoUrl})
   if(video && user){
     
-      const index=video.like.findIndex(users=>users._id===user._id)
+      const index=video.like.findIndex(users=>users._id.toString()===user._id.toString())
       if(index!==-1){
         video.like.splice(index,1)
         video.Dislike.push(user)
@@ -202,8 +205,8 @@ routes.get("/get-like-dislike/:id",isuserLoggedin,async(req,res)=>{
        const user=await userModel.findById(req.params.id)
        if(user){
         const video=await videoModel.findOne({user_id:user._id})
-          const likeIndex=video.like.findIndex(users=>users._id===user._id)
-          const DislikeIndex=video.Dislike.findIndex(users=>users._id===user._id)
+          const likeIndex=video.like.findIndex(users=>users._id.toString()===user._id.toString())
+          const DislikeIndex=video.Dislike.findIndex(users=>users._id.toString()===user._id.toString())
           if(likeIndex!==-1&&DislikeIndex!==-1){
             return res.status(300).json({msg:"Not liked"})
           }
