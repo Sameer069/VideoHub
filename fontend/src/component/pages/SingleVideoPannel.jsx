@@ -41,33 +41,6 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
         }
         fetchData()
    },[])
-  useEffect(()=>{
-      const fecthLike=async()=>{
-        try{
-          const response=await axios.get(`https://videohub-z726.onrender.com/get-like-dislike/${userid}`,{
-            headers:{Authorization:`Bearer ${token}`}
-          })
-          if(response.status===200){
-            setToggleLike(true)
-            setToggledislike(false)
-          }
-          else if(response.status===201){
-            setToggledislike(true)
-            setToggleLike(false)
-            
-          }
-          else{
-            setToggleLike(false)
-            setToggleLike(false)
-          }
-        }
-        catch(err){
-
-        }
-      }
-      fecthLike()
-  },[togglelike,toggledislike])
-
   
    function handleChangeComment(e){
       setcomment(e.target.value)
