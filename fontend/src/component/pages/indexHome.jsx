@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DehazeOutlinedIcon from '@mui/icons-material/DehazeOutlined';
 import axios from 'axios';
 import SearchBar from './SearchBar';
+import { useNavigate } from 'react-router-dom';
 
 function IndexHome({profilejpg,VideoSearchBar}) {
   const [Searchvalue,setSearchValue]=useState()
@@ -14,6 +15,7 @@ function IndexHome({profilejpg,VideoSearchBar}) {
   const [userid,setUserid]=useState(localStorage.getItem("userid"))
   const[preview,setPreview]=useState(null)
   const [NavbarToggle,setNavbarToggle]=useState(true)
+  const navigate=useNavigate()
 
   const inputimgClick=()=>{
     inputRef.current.click()
@@ -43,7 +45,9 @@ function IndexHome({profilejpg,VideoSearchBar}) {
   useEffect(()=>{
     setUserid(localStorage.getItem("userid"))
   },[localStorage.getItem("userid")])
-  
+  const handleCreateVideoClick=()=>{
+    navigate("/addVideo")
+  }
   return (
    <div className='w-full  '>
      {NavbarToggle?
@@ -65,7 +69,7 @@ function IndexHome({profilejpg,VideoSearchBar}) {
         <div><button onClick={navbartoggle} className=' w-[100px] max-[768px]:w-[40px] md:hidden' ><SearchIcon className='text-black'/></button></div>
        
        <div className='flex items-center max-[768px]:hidden'>
-          <button className=' me-4 bg-gray-200 p-1.5 rounded-[6px]'><AddIcon className=''/>create</button>
+          <button onClick={handleCreateVideoClick} className=' me-4 bg-gray-200 p-1.5 rounded-[6px]'><AddIcon className=''/>create</button>
           
           <img src={preview || profilejpg} onClick={inputimgClick} className='cursor-pointer inline-block h-[35px] w-[35px] bg-gray-400 rounded-[50%]' alt='imga'/>
           <input type='file'  ref={inputRef} name='uploadPic' onChange={handleImgchhange} className=' hidden'/ >

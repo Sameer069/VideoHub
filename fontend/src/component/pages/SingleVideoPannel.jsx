@@ -41,8 +41,31 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
         }
         fetchData()
    },[])
+  useEffect(()=>{
+      const fecthLike=async()=>{
+        try{
+          const response=await axios.get(`https://videohub-z726.onrender.com/get-like-dislike/${userid}`,{
+            headers:{Authorization:`Bearer ${token}`}
+          })
+          if( response.status===200){
+            setToggleLike(true)
+            setToggledislike(false)
+          }
+          else if(response.status===201){
+            setToggledislike(true)
+            setToggleLike(false)
+          }
+          else{
+            setToggleLike(false)
+            setToggleLike(false)
+          }
+        }
+        catch(err){
 
-
+        }
+      }
+      fecthLike()
+  },[togglelike,toggledislike])
 
   
    function handleChangeComment(e){
@@ -146,9 +169,24 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
    }
 
  }
- const handleDislikeClick=()=>{
+ const handleDislikeClick=async()=>{
    setToggledislike(true)
    setToggleLike(false)
+   const formdata=new FormData()
+
+   formdata.append("videoUrl",videoUrl)
+   formdata.append("userid",userid)
+
+   try{
+     const response=await axios.post(`https://videohub-z726.onrender.com/remove-like`,formdata,{
+      headers:{Authorization:`Bearer ${token}`}
+     })
+    
+   }
+   catch(error){
+
+   }
+
  }
  
   return (
@@ -181,17 +219,17 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
               <div className=' font-bold'>{userVideoInfo.user_id.user_name}</div>
               </div>
                
-               <div><button className='bg-stone-100 rounded-[10px] cursor-pointer p-[8px]'>Subscribe</button></div>
+               <div><button className='bg-stone-100 hover:bg-stone-300 rounded-[10px] cursor-pointer p-[8px]'>Subscribe</button></div>
          </div>
 
-         <div className='flex gap-6 mt-2'>
+         <div className='flex gap-6 mt-2 w-full'>
             <div className=''>
-               <button onClick={handleLikeClick} className='bg-stone-100 p-2  rounded-bl-[10px] rounded-tl-[10px] w-[100px] inline-block  '>{togglelike?<ThumbUpIcon/>:<ThumbUpOutlinedIcon/>}<span className='ps-2'>{userVideoInfo.like.length}</span></button>
-              <button  onClick={handleDislikeClick} className=' bg-stone-100 p-2  rounded-br-[10px] rounded-tr-[10px]'>{toggledislike?<ThumbDownIcon/>:<ThumbDownOutlinedIcon/>}</button>
+               <button onClick={handleLikeClick} className='bg-stone-100 p-2 cursor-pointer rounded-bl-[10px] rounded-tl-[10px] w-[100px] inline-block  '>{togglelike?<ThumbUpIcon/>:<ThumbUpOutlinedIcon/>}<span className='ps-2'>{userVideoInfo.like.length}</span></button>
+              <button  onClick={handleDislikeClick} className=' bg-stone-100 p-2  cursor-pointer  rounded-br-[10px] rounded-tr-[10px]'>{toggledislike?<ThumbDownIcon/>:<ThumbDownOutlinedIcon/>}</button>
             </div>
 
             <div>
-            <button  className=' bg-stone-100 p-2 rounded-[10px] '>
+            <button  className='  cursor-pointer bg-stone-100 p-2 rounded-[10px] '>
              <ReplyOutlinedIcon/>
              <span>Share</span>
             </button>
@@ -199,7 +237,7 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
             </div>
 
             <div>
-            <button   className=' bg-stone-100 p-2 rounded-[10px] '>
+            <button  onClick={()=>setTogglesave(!togglesave)} className='  cursor-pointer bg-stone-100 p-2 rounded-[10px] '>
             {
                togglesave?<BookmarkIcon/>:<BookmarkBorderOutlinedIcon/>
             }

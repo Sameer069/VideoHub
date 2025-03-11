@@ -27,6 +27,10 @@ const videoSchema=new mongoose.Schema({
       type:mongoose.Schema.ObjectId,
      ref:"userTable"
     }],
+    Dislike:[{
+      type:mongoose.Schema.ObjectId,
+      ref:"userTable"
+    }],
     views:[
         {
             type:mongoose.Schema.ObjectId,

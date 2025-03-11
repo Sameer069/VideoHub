@@ -191,11 +191,11 @@ const IndexPage=()=>{
        <section className="indexSection w-full">
            <div className="flex z-10 bg-white pt-2 pb-3 justify-between h-[300px] text-center flex-col text-[10px] max-[768px]:fixed bottom-0 max-[768px]:flex-row  max-[768px]:h-[60px] max-[768px]:w-full max-[768px]:justify-evenly  ">
              <div className=" hover:bg-stone-200 rounded-[10px] flex flex-col  item-center justify-between h-[50px]  cursor-pointer" onClick={handleHomeClick}>
-             <HomeIcon />
+           <div>  <HomeIcon /></div>
              <div>Home</div>
              </div>
              <div className="flex flex-col  item-center justify-between h-[50px] " onClick={handleNotAvalaibleClick}>
-             <VideoLibraryIcon/>
+             <div>   <VideoLibraryIcon/></div>
              <div>Shorts</div>
              </div>
            
@@ -209,8 +209,8 @@ const IndexPage=()=>{
              <div>Subscriptions</div>
              </div>
 
-             <div className="cursor-pointer  max-[768px]:hidden  flex flex-col  item-center justify-between h-[50px]  " onClick={()=>setToggle("profile")} >
-             <div className=" md:inline p-6  hover:bg-stone-200 rounded-[10px]" ><AccountCircleOutlinedIcon /></div>
+             <div className="cursor-pointer  max-[768px]:hidden rounded-[10px]  hover:bg-stone-200  flex flex-col  item-center justify-between h-fit  " onClick={()=>setToggle("profile")} >
+             <div className=" md:inline p-4 " ><AccountCircleOutlinedIcon /></div>
 
              <div>You</div>
           
