@@ -176,11 +176,11 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
          </div>
          <div className='flex  gap-5 items-center justify-between h-[60px]'>
               <div className=' flex items-center gap-3 '>
-                <div className='w-[50px]'> <img width="100%" className='rounded-[50%]' src={`${userVideoInfo.user_id.profile}`}/></div>
+                <div className='w-[40px] h-[40px]'> <img  className='rounded-[50%] w-full h-full' src={`${userVideoInfo.user_id.profile}`}/></div>
               
               <div className=' font-bold'>{userVideoInfo.user_id.user_name}</div>
               </div>
-              
+               
                <div><button className='bg-stone-100 rounded-[10px] cursor-pointer p-[8px]'>Subscribe</button></div>
          </div>
 
@@ -242,8 +242,8 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
             TotalComment.map((commentUser,i)=>{
                return <div key={i} className='my-3'>
               <div className='flex'>
-              <div className='w-[45px] h-[50px]'>
-              <img  width="100%" height="30" className='rounded-[50%]' src={`${commentUser.commentProfile}`}/></div>
+              <div className='w-[40px] h-[40px]'>
+              <img   className='rounded-[50%] w-full h-full' src={`${commentUser.commentProfile}`}/></div>
              <div className='ms-2 relative w-full'>
              <div className='text-[13px]'>{commentUser.user_name}</div>
              <div className='text-[15px]'> {commentUser.comments}</div>

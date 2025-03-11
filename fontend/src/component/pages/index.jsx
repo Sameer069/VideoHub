@@ -190,26 +190,26 @@ const IndexPage=()=>{
        </header>
        <section className="indexSection w-full">
            <div className="flex z-10 bg-white pt-2 pb-3 justify-between h-[300px] text-center flex-col text-[10px] max-[768px]:fixed bottom-0 max-[768px]:flex-row  max-[768px]:h-[60px] max-[768px]:w-full max-[768px]:justify-evenly  ">
-             <div className=" hover:bg-stone-200 rounded-[10px] cursor-pointer" onClick={handleHomeClick}>
+             <div className=" hover:bg-stone-200 rounded-[10px] flex flex-col  item-center justify-between h-[50px]  cursor-pointer" onClick={handleHomeClick}>
              <HomeIcon />
              <div>Home</div>
              </div>
-             <div  onClick={handleNotAvalaibleClick}>
+             <div className="flex flex-col  item-center justify-between h-[50px] " onClick={handleNotAvalaibleClick}>
              <VideoLibraryIcon/>
              <div>Shorts</div>
              </div>
            
-            <div className="max-[768px]:block hidden w-[20px]" onClick={handleAddvideo} >
+            <div className="max-[768px]:block hidden    h-[50px]  w-[20px]" onClick={handleAddvideo} >
             <AddIcon sx={{width:30,height:30}}></AddIcon>
             </div>
            
 
-             <div onClick={handleNotAvalaibleClick} className="flex flex-col  text-center">
+             <div onClick={handleNotAvalaibleClick} className="flex flex-col  item-center justify-between h-[50px] ">
              <div  className=""> <SubscriptionsIcon/></div>
              <div>Subscriptions</div>
              </div>
 
-             <div className="cursor-pointer  max-[768px]:hidden  " onClick={()=>setToggle("profile")} >
+             <div className="cursor-pointer  max-[768px]:hidden  flex flex-col  item-center justify-between h-[50px]  " onClick={()=>setToggle("profile")} >
              <div className=" md:inline p-6  hover:bg-stone-200 rounded-[10px]" ><AccountCircleOutlinedIcon /></div>
 
              <div>You</div>
@@ -217,8 +217,8 @@ const IndexPage=()=>{
             
              </div>
               
-               <div className="max-[768px]:inline md:hidden  h-[70px] " onClick={handleProfileClick } >
-                <div className=""><img src={ profile} width="25" height="25" className=" inline-block rounded-[50%] bg-cover" alt="user"/></div>
+               <div className="max-[768px]:inline md:hidden  flex flex-col  item-center justify-between h-[50px]  " onClick={handleProfileClick } >
+                <div className="w-[40px] h-[40px]"><img src={ profile} className=" w-full h-full rounded-[50%] " alt="user"/></div>
                <div>You</div>
               
               </div>

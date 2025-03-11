@@ -145,12 +145,15 @@ function Videopannel() {
             </div>
               <div className=' max-[768px]:px-[10px]'>
              <div className='flex items-center  h-[60px] overflow-hidden  '>
-            <div className='w-[50px] overflow-hidden'> <img src={`${url.user_id.profile}`} width="100%" height="30" className='rounded-[50%]'/></div>
+            <div className='w-[35px] h-[35px] overflow-hidden relative'>
+             <img src={`${url.user_id.profile}`}  className='rounded-[50%] absolute top-1/2 left-1/2 w-full h-full object-cover transform -translate-x-1/2 -translate-y-1/2'/></div>
             <div className='mx-[10px]  h-[50px] overflow-hidden'>
             {url.title}
             
             </div>
             <div><MoreVertIcon/></div>
+             
+
            
             </div>
             <div className='ps-[39px]  max-[768px]:flex max-[768px]:text-[0.8rem]'>
