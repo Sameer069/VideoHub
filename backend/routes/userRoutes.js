@@ -205,7 +205,7 @@ routes.get("/get-like-dislike/:id",isuserLoggedin,async(req,res)=>{
        const user=await userModel.findById(req.params.id)
        if(user){
         const video=await videoModel.findOne({user_id:user._id})
-          const likeIndex=video.like.findIndex(users=>users._id.toString()===user._id.toString())
+          const likeIndex=video.like.findIndex(users=>users._id===user._id)
           const DislikeIndex=video.Dislike.findIndex(users=>users._id.toString()===user._id.toString())
           if(likeIndex!==-1&&DislikeIndex!==-1){
             return res.status(300).json({msg:"Not liked"})
