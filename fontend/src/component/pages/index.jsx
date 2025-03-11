@@ -93,6 +93,7 @@ const IndexPage=()=>{
   const handleHomeClick=()=>{
     setVFilter(false)
     setToggle("all")
+    setActive(null)
   }
   useEffect(()=>{
     if(!token ){
@@ -176,6 +177,7 @@ const IndexPage=()=>{
      alert("Sorry This feauture update soon...")
   }
   const handleAddvideo=()=>{
+    
    navigate("/addVideo")
   }
   
