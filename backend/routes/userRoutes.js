@@ -151,10 +151,12 @@ routes.post("/user-login",async(req,res)=>{
     const video=await videoModel.findOne({url:req.body.videoUrl})
     if(video && user){
       const index=video.Dislike.findIndex(users=>users._id===user._id)
+      if(index!==-1){
+        video.Dislike.splice(index,1)
+        await video.save()
+      }
       if(video.like.indexOf(user._id)===-1){
-        if(index!==-1){
-          video.Dislike.splice(index,1)
-        }
+       
         video.like.push(user)
         await video.save()
         res.status(200).json({msg:"Like submit"})
