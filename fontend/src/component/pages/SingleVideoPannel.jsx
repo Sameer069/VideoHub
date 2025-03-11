@@ -47,13 +47,14 @@ function SingleVideoPannel({videoUrl,userVideoInfo}) {
           const response=await axios.get(`https://videohub-z726.onrender.com/get-like-dislike/${userid}`,{
             headers:{Authorization:`Bearer ${token}`}
           })
-          if( response.status===200){
-            setToggleLike(true)
-            setToggledislike(false)
-          }
-          else if(response.status===201){
+          if(response.status===200){
             setToggledislike(true)
             setToggleLike(false)
+          }
+          else if(response.status===201){
+           
+            setToggleLike(true)
+            setToggledislike(false)
           }
           else{
             setToggleLike(false)

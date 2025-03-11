@@ -179,9 +179,11 @@ routes.post("/user-login",async(req,res)=>{
         return  res.status(200).json({msg:"DisLike"})
       }
       else{
-        video.Dislike.push(user)
-         await video.save()
-        return res.status(201).json({msg:"Dislike"})
+        if(video.Dislike.indexOf(user._id)===-1){
+          video.Dislike.push(user)
+          await video.save()
+          return res.status(201).json({msg:"Dislike"})
+        }
       }
      
      
