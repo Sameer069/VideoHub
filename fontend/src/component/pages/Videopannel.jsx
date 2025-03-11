@@ -145,7 +145,7 @@ function Videopannel() {
             </div>
               <div className=' max-[768px]:px-[10px]'>
              <div className='flex items-center  h-[60px] overflow-hidden  '>
-             <img src={`${url.user_id.profile}`} width="30" height="30" className='rounded-[50%]'/>
+            <div className='w-[50px] overflow-hidden'> <img src={`${url.user_id.profile}`} width="100%" height="30" className='rounded-[50%]'/></div>
             <div className='mx-[10px]  h-[50px] overflow-hidden'>
             {url.title}
             

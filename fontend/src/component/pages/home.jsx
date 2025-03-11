@@ -26,7 +26,7 @@ const Homepage=()=>{
                 <span onClick={handleNavbaropen}><DehazeIcon ></DehazeIcon></span>
                </div>
                <div  className={` ${toggle? "showNav":"hideNav" } min-[768px]:hidden z-[10]   h-full  flex justify-center    absolute bg-[#181717]  w-full left-[0] top-0 `}>
-                  <div className="flex w-full mt-20 flex-col">
+                  <div className="flex w-full mt-20  flex-col">
                   <Link to="/signin"> <button onClick={handleNavbarclose} className={` pt-1.5 pb-1.5 w-full hover:bg-stone-500 my-1.5 text-[25px]`}>Signin</button></Link>
                   <Link> <button  onClick={handleNavbarclose} className="w-full pt-1.5 pb-1.5  hover:bg-stone-500 text-[25px]">Admin</button></Link>
                   </div>
