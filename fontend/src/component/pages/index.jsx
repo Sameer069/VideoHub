@@ -235,7 +235,7 @@ const IndexPage=()=>{
                  {
                   categories.map((category,i)=>{
                     return <div key={i}>
-                    <Button onClick={()=>VideoSearchBar(category.category,i)}  sx={{backgroundColor:active===i?"black":"rgb(241, 238, 238)",color:active===i?"white":"black",height:"30px"}} >{category.category}</Button>
+                    <Button onClick={()=>VideoSearchBar(category.category,i)}  sx={{backgroundColor:active===i?"black":"rgb(241, 238, 238)",color:active===i?"white":"black",height:"30px",overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}} >{category.category}</Button>
                     </div>
                   })
                  }
